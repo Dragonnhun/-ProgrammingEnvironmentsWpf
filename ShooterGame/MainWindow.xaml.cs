@@ -15,10 +15,11 @@ namespace ShooterGame
     public partial class MainWindow : Window
     {
         DispatcherTimer gameTimer = new DispatcherTimer();
-        bool moveLeft, moveRight;
         List<Rectangle> itemRemover = new List<Rectangle>();
 
         Random rand = new Random();
+
+        bool moveLeft, moveRight;
 
         int enemySpriteCounter = 0;
         int enemyCounter = 100;
@@ -54,8 +55,6 @@ namespace ShooterGame
             ImageBrush playerImage = new ImageBrush();
             playerImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/player.png"));
             player.Fill = playerImage;
-
-
         }
 
         private void GameLoop(object sender, EventArgs e)
@@ -77,11 +76,11 @@ namespace ShooterGame
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) - playerSpeed);
             }
+
             if (moveRight == true && Canvas.GetLeft(player) + 90 < Application.Current.MainWindow.Width)
             {
                 Canvas.SetLeft(player, Canvas.GetLeft(player) + playerSpeed);
             }
-
 
             foreach (var x in ShooterCanvas.Children.OfType<Rectangle>())
             {
@@ -110,7 +109,6 @@ namespace ShooterGame
                             }
                         }
                     }
-
                 }
 
                 if (x is Rectangle && (string)x.Tag == "enemy")
@@ -130,7 +128,6 @@ namespace ShooterGame
                         itemRemover.Add(x);
                         damage += 5;
                     }
-
                 }
             }
 
@@ -138,7 +135,6 @@ namespace ShooterGame
             {
                 ShooterCanvas.Children.Remove(i);
             }
-
 
             if (score > 5)
             {
@@ -153,7 +149,7 @@ namespace ShooterGame
                 damageText.Foreground = Brushes.Red;
 
                 MessageBoxResult result = MessageBox.Show(
-                    "You have destroyed " + score + " alien ships." + Environment.NewLine + "Would you like to play again?",
+                    "You have destroyed " + score + " alien ships. \n\n" + "Would you like to play again?",
                     "You lost",
                     MessageBoxButton.YesNo);
 
@@ -176,6 +172,7 @@ namespace ShooterGame
             {
                 moveLeft = true;
             }
+
             if (e.Key == Key.Right)
             {
                 moveRight = true;
@@ -188,6 +185,7 @@ namespace ShooterGame
             {
                 moveLeft = false;
             }
+
             if (e.Key == Key.Right)
             {
                 moveRight = false;
@@ -209,7 +207,6 @@ namespace ShooterGame
                 Canvas.SetTop(newBullet, Canvas.GetTop(player) - newBullet.Height);
 
                 ShooterCanvas.Children.Add(newBullet);
-
             }
         }
 

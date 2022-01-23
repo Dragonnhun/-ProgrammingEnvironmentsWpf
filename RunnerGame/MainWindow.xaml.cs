@@ -18,23 +18,21 @@ namespace RunnerGame
         Rect obstacleHitBox;
 
         bool jumping;
-
-        int force = 20;
-        int speed = 5;
-
-        Random rnd = new Random();
-
         bool gameOver;
 
         double spriteIndex = 0;
 
-        ImageBrush playerSprite = new ImageBrush();
-        ImageBrush backgroundSprite = new ImageBrush();
-        ImageBrush obstacleSprite = new ImageBrush();
+        int force = 20;
+        int speed = 5;
+        int score = 0;
 
         int[] obstaclePosition = { 320, 310, 300, 305, 315 };
 
-        int score = 0;
+        Random rnd = new Random();
+
+        ImageBrush playerSprite = new ImageBrush();
+        ImageBrush backgroundSprite = new ImageBrush();
+        ImageBrush obstacleSprite = new ImageBrush();
 
         public MainWindow()
         {
@@ -83,9 +81,9 @@ namespace RunnerGame
             {
                 speed = 0;
 
-                Canvas.SetTop(player, Canvas.GetTop(ground) - player.Height);
-
                 jumping = false;
+
+                Canvas.SetTop(player, Canvas.GetTop(ground) - player.Height);
 
                 spriteIndex += .5;
 
@@ -129,7 +127,7 @@ namespace RunnerGame
                 gameTimer.Stop();
             }
 
-            if (gameOver == true)
+            if (gameOver)
             {
                 obstacle.Stroke = Brushes.Black;
                 obstacle.StrokeThickness = 1;
