@@ -1,0 +1,36 @@
+﻿<Window x:Class="ShooterGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Shooter"
+        Height="615"
+        Width="540"
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
+    <Canvas x:Name="ShooterCanvas" Focusable="True" Background="Black" VerticalAlignment="Stretch">
+        <Rectangle 
+            x:Name="player"
+            Height="50"
+            Width="60"
+            Fill="Yellow"
+            Canvas.Left="246"
+            Canvas.Top="498" />
+
+        <Label
+            x:Name="scoreText"
+            Content="Score: 0" 
+            FontSize="18" 
+            FontWeight="Bold"
+            Foreground="White" />
+
+        <Label
+            x:Name="damageText"
+            Content="Score: 0"
+            FontSize="18"
+            FontWeight="Bold" 
+            Foreground="White" 
+            Canvas.Left="395" />
+    </Canvas>
+</Window>
